@@ -11,11 +11,9 @@ A Python CLI tool that checks specific screen pixels and clicks matching Twitch 
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/AutoTwitchChannelPoints.git
+git clone https://github.com/alwayschangingusernames/AutoTwitchChannelPoints.git
 cd AutoTwitchChannelPoints
 ```
-
-Replace `<your-username>` with your GitHub username (or use your fork URL).
 
 ## Run on Windows (PowerShell)
 
@@ -23,7 +21,7 @@ Replace `<your-username>` with your GitHub username (or use your fork URL).
 python .\program.py
 ```
 
-On first run, the script installs dependencies from `requirements.txt` automatically.
+On first run, the script installs dependencies from `requirements.txt`.
 
 ## Run on Linux (bash)
 
