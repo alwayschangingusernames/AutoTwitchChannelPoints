@@ -83,24 +83,29 @@ class PixelCheckerCLI:
         print("4. Exit")
         print("="*50)    
     def check_pixels(self):
-        print("\nStarting Multi-Monitor Pixel Check...")
-        print(f"Target Color: RGB{BUTTON_COLOR}")
-        print(f"Color Tolerance: ±{COLOR_TOLERANCE}")
-        print("Checking every 60 seconds. Press Ctrl+C to stop.\n")
-        
+        minutes_since_last_click = 0
+        total_clicks = 0
+
         try:
             while True:
-                found = check_buttons_on_monitor(1, PRIMARY_MONITOR_BUTTONS, "Primary Monitor")
-                found2 = check_buttons_on_monitor(2, SECONDARY_MONITOR_BUTTONS, "Secondary Monitor")
-                
-                if found or found2:
-                    print("Button Clicked.")
-                else:
-                    print("Button not found.")
+                found_primary = check_buttons_on_monitor(1, PRIMARY_MONITOR_BUTTONS, "Primary Monitor")
+                found_secondary = check_buttons_on_monitor(2, SECONDARY_MONITOR_BUTTONS, "Secondary Monitor")
 
-                print("\nWaiting 60 seconds before next check...")
+                if found_primary or found_secondary:
+                    total_clicks += 1
+                    minutes_since_last_click = 0
+                else:
+                    minutes_since_last_click += 1
+
+                self.clear_terminal()
+                print("\n" + "="*50)
+                print("Multi-Monitor Pixel Checker")
+                print("="*50)
+                print(f"Minutes since Last Click: {minutes_since_last_click} | Times Button has been Clicked: {total_clicks}")
+                print("Press Ctrl+C to stop.")
+
                 time.sleep(60)
-        
+
         except KeyboardInterrupt:
             print("\n\nPixel check stopped by user.")   
     def calibrate(self):
@@ -177,6 +182,4 @@ class PixelCheckerCLI:
 if __name__ == "__main__":
     cli = PixelCheckerCLI()
     cli.run()
-
-
-
+    
