@@ -1,7 +1,6 @@
 # AutoTwitchChannelPoints
 
-A Python CLI tool that checks specific screen pixels and clicks matching Twitch UI buttons automatically.
-
+A Python CLI tool that checks specific screen pixels and automatically clicks matching Twitch UI buttons.
 ## Requirements
 
 - Python 3.9 or newer
