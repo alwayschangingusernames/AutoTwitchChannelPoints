@@ -24,6 +24,17 @@ SECONDARY_MONITOR_BUTTONS: Dict[str, Dict[str, int]] = {
     "theater_mode": {"x": 1700, "y": 1000},
 }
 
+def move_mouse_to_secondary_center() -> None:
+    try:
+        with mss.mss() as sct:
+            if len(sct.monitors) < 3:
+                return
+            secondary = sct.monitors[2]
+            center_x = secondary["left"] + (secondary["width"] // 2)
+            center_y = secondary["top"] + (secondary["height"] // 2)
+            pyautogui.moveTo(center_x, center_y)
+    except Exception as e:
+        print(f"Error moving mouse to secondary center: {e}")
 def color_matches(pixel_color: Tuple[int, int, int], target_color: Tuple[int, int, int], tolerance: int) -> bool:
     return all(abs(pixel_color[i] - target_color[i]) <= tolerance for i in range(3))
 def check_pixel_on_monitor(monitor_num: int, x: int, y: int, expected_color: Tuple[int, int, int]) -> bool:
@@ -51,6 +62,7 @@ def check_buttons_on_monitor(monitor_num: int, buttons: Dict[str, Dict[str, int]
     for button_name, coords in buttons.items():
         if check_pixel_on_monitor(monitor_num, coords["x"], coords["y"], BUTTON_COLOR):
             pyautogui.click(coords["x"], coords["y"])
+            move_mouse_to_secondary_center()
             found = True
     
     return found
@@ -165,5 +177,6 @@ class PixelCheckerCLI:
 if __name__ == "__main__":
     cli = PixelCheckerCLI()
     cli.run()
+
 
 
