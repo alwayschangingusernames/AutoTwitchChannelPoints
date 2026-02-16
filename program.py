@@ -21,7 +21,7 @@ PRIMARY_MONITOR_BUTTONS: Dict[str, Dict[str, int]] = {
 }
 SECONDARY_MONITOR_BUTTONS: Dict[str, Dict[str, int]] = {
     "fullscreen": {"x": -220, "y": 1050},
-    "theater_mode": {"x": -220, "y": 1000},
+    "theater_mode": {"x": -220, "y": 1005},
 }
 
 def move_mouse_to_secondary_center() -> None:
