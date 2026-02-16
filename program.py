@@ -1,9 +1,7 @@
-import sys, os, subprocess
-def install_requirements():
-    requirements_file = os.path.join(os.path.dirname(__file__), "requirements.txt")
-    if os.path.exists(requirements_file):
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", requirements_file])
-install_requirements()
+import os, subprocess, sys
+def install():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+install()
 
 import time
 from typing import Tuple, Dict
