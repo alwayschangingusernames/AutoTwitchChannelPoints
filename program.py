@@ -99,7 +99,7 @@ class PixelCheckerCLI:
 
                 self.clear_terminal()
                 print("\n" + "="*50)
-                print("Multi-Monitor Pixel Checker")
+                print("AutoTwitchChannelPoints")
                 print("="*50)
                 print(f"Minutes since Last Click: {minutes_since_last_click} | Times Button has been Clicked: {total_clicks}")
                 print("Press Ctrl+C to stop.")
@@ -182,4 +182,5 @@ class PixelCheckerCLI:
 if __name__ == "__main__":
     cli = PixelCheckerCLI()
     cli.run()
+
     
